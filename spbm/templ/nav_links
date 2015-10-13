@@ -1,0 +1,2 @@
+<a href="{$php_self}?ac=mysql" title="{$msg_conn_db}">{$msg_conn_db}</a><a href="{$php_self}?ac=dirs" title="{$msg_bk_df}">{$msg_bk_df}</a><a href="{$php_self}" title="{$msg_show_files}">{$msg_show_files}</a><a href="{$php_self}?ac=logout" title="{$msg_logout}" id="logout">{$msg_logout}</a>
+<div>{$msg_conn_to}</div>
