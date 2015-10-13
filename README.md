@@ -1,2 +1,56 @@
-# php-backup-manager
-Php tool to create backups of your website: MySQL Database, Folders and Files.
+<h1>sPBM - Simple PHP Backup Manager</h1>
+This is a <strong>free and open source PHP tool to create Backups of your website (MySQL Database, Folders and Files)</strong>. The backups are saved in ZIP archives on server. The sPBM script can also restore the MySQL tables in your database from the SQL backup stored in ZIP archive.
+<h3>Features</h3>
+- Simple and easy to use interface to Backup MySQL tables and website directories.<br>
+- You can select the MySQL tables which to backup.<br>
+- You can backup the whole website, or the folders and files you wish.<br>
+- Ability to exclude files from backup (by their extension).<br>
+- Automatic backups of folders and MySQL database (by a small PHP script which must be accessed from Cron Jobs).<br>
+- Supports both PDO and MySQLi for accessing MySQL databases in PHP.<br>
+- Ability to restore the backup of the MySQL tables.<br>
+- You can Download, and Delete the ZIP archives with backups from server.<br>
+- The script can be easily translated and used in other languages, without affecting the code.
+<h4>Requirements</h4>
+- PHP 5.4+<br>
+- Modern Browser with JavaScript enabled (Mozilla-Firefox, Google-Chrome, Opera, Internet-Explorer 9+).
+<h3>Installation</h3>
+<ol>
+ <li>Open the <span class="sb">config.php</span> file (in the "<span class="sbi">spbm/php/</span>" folder) and add your Name and Password for Admin (to the <span class="sbi">$admin_name</span> and <span class="sbi">$admin_pass</span> variables).</li>
+ <li>If you want to change the Root directory of the folders and files which can be selected for backup, change the value of the "<span class="sb">ROOT_DIR</span>" constant with the path of the directory you want for Root (RELATIVE TO THE ROOT OF YOUR WEBSITE ON SERVER, starting with "/").</li>
+ <li>Copy the "<span class="sb">spbm</span>" folder on your server (with all its content).</li>
+ <li>Set CHMOD 0755 (or 0777) permissions to the "<span class="sb">spbm/backup/</span>" folder on your server (it is used to store the ZIP files with the backups).</li>
+ <li>Access the "<span class="sb">spbm/index.php</span>" file in your browser, with the address from server; for example: <span class="sbi">http://localhost/spbm/index.php</span></li>
+ <li>Add your Admin name and password to loggin.</li>
+ <li>To backup the MySQL tables, click on the "<span class="sbi">Connect to a Database</span>" tab, and add your data for connecting to MySQL database (MySQL server, Username, Password, Database_Name). Then select the tables you want to backup.</li>
+ <li>To backup the website folders and files, click on the "<span class="sbi">Backup Directories /Files</span>" tab, and select the folders and files you want to backup (use the buttons from the top-right side).</li>
+ <li>To Restore, Download or Delete archive with backup, click on the "<span class="sbi">Show saved ZIP files</span>" tab.</li>
+</ol>
+<h3>Settings for Cron</h3>
+If you want to automatically backup MySQL database and directories, access the "<span class="sb">pbm_cron.php</span>" file with Cron Jobs (from hosting CPanel), passing the "<span class="sbi">cron=ADMIN_NAME</span>" for $_GET variable (ADMIN_NAME is the name added to the <span class="sbi">$admin_name</span> variable).<br>
+For example, you can use one of these commands in Cron Jobs:
+<pre>curl http://WEBSITE_NAME/spbm/pbm_cron.php?cron=ADMIN_NAME > /dev/null</pre>
+OR:
+<pre>lynx -source http://WEBSITE_NAME/spbm/pbm_cron.php?cron=ADMIN_NAME > /dev/null</pre>
+OR:
+<pre>/usr/local/bin/php /home/CPanelUSER/public_html/spmb/pbm_cron.php ADMIN_NAME > /dev/null</pre>
+&bull; Edit these settings in "<span class="sb">config.php</span>":<br>
+- In the <span class="sb">$bk_cron_mysql</span> array add your data for connecting to database.<br>
+- In the <span class="sb">$bk_cron_dirs</span> array you can add the folders you want to backup, located in the ROOT_DIR (To backup all the folders and files of ROOT_DIR, let the value as it is: <span class="sb">['']</span>).<br>
+Example:
+<blockquote class="sb">$bk_cron_dirs = ['dir1', 'dir2', 'dir3'];</blockquote>
+- In the <span class="sb">$bk_exc</span> array you can add the extensions of the files you want to exclude from backup.<br>
+Example:
+<blockquote class="sb">$bk_exc = ['ext1', 'ext2', 'ext3'];</blockquote>
+- If you Not want to backup mysql database, set 0 to the <span class="sb">BK_CRON_SQL</span> constant.<br>
+- If you Not want to backup directories, set 0 to the <span class="sb">BK_CRON_DIR</span> constant.
+
+<h3>Other Specifications</h3>
+&bull; By default, the ZIP archive with the database backup is saved with this format: "<span class="sbi">mysql-DB_NAME-DATE@TIME.sql.zip</span>", so, every backup of the same database is saved into a new Zip file. If you want to have a fixed name for the database backup, change the "<span class="sbi">new</span>" value of the <span class="sb">ZIP_SQL</span> constant with "<span class="sb">fix</span>"; so, the ZIP file with the database backup will have this format: "<span class="sbi">mysql-DB_NAME.sql.zip</span>" (In Cron the script uses "fix").<br><br>
+&bull; The name of the ZIP archive with directories and files is saved with this format: "<span class="sbi">dir-ROOT_DIR.zip</span>".<br><br>
+&bull; If you want to save the ZIP files in other directory on your server, modify the value of the <span class="sb">BK_DIR</span> constant in the "config.php" file.<br><br>
+&bull; If you want to use the script in other language, translate the texts from the <span class="sb">lang_en.json</span> file (in the "<span class="sbi">spbm/templ/</span>" foder) and save it in other "lang_...json" file, with the indice of the language, for example for Chinese save the texts in the "lang_ch.json". The texts in the ".json" file must be stored in valid JSON format. Then, change the value of the <span class="sb">LANG</span> constant in the "config.php" file with the same indice.
+<blockquote class="sbi">define('LANG', 'ch');</blockquote><br><hr><br>
+
+ &bull; Home Page: <a href="http://coursesweb.net/php-mysql/simple-backup-manager" title="sPBM - Simple PHP Backup Manager">http://coursesweb.net/php-mysql/simple-backup-manager_s2</a><br><br><br>
+ - <span class="sbi">This script is Free, and Open Source. You can use, modify and publish it freely.<br>
+ <em id="mp">With blessing, MarPlo - <a href="http://www.marplo.net/" title="MarPlo.net">MarPlo.net</a> / <a href="http://coursesweb.net/" title="CoursesWeb.net">CoursesWeb.net</a></em>
