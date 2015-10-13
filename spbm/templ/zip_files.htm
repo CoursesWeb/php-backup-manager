@@ -1,0 +1,13 @@
+<form action="{$uri}" method="post" id="frm_zip">
+<input type="hidden" id="dir_bk" value="{$bk_dir}">
+<div id="bk_sql">
+<h3>{$msg_zip_sql}</h3>
+<input type="hidden" name="pbm_zip" value="restore">
+{$zip_sql}
+</div>
+<div id="bk_dirs">
+<h3>{$msg_zip_dirs}</h3>
+{$zip_dirs}
+</div>
+<input type="button" value="{$msg_restore_bk}" id="res_file"> <input type="button" value="{$msg_get_file}" id="get_file"> <input type="button" value="{$msg_del_file}" id="del_file">
+</form>
