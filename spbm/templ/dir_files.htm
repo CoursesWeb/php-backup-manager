@@ -1,0 +1,13 @@
+<div id="dirs_root">
+{$msg_root}: <strong id="root_dir">{$dir}</strong>
+<ul>{$dirs_root}</ul>
+</div>
+<div id="sel_bk">
+<h3>&#10159;{$msg_sel_dir_bk}: <em id="dir_sel">{$dir}</em></h3>
+<div id="ch_df">
+&#10157; {$msg_sel_all}: <label id="ch_dirs"><input type="checkbox"><em>{$nrd}</em> {$msg_folders}</label><label id="ch_files"><input type="checkbox"><em>{$nrf}</em> {$msg_files}</label>
+</div>
+<ul>{$sel_bk}</ul>
+ &bull; {$msg_exclude_bk}: <input type="text" name="bk_exc" id="bk_exc"  placeholder="ex1, ex2, ..." />
+<button id="btn_bk">{$msg_backup}</button>
+</div>
