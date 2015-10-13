@@ -51,6 +51,6 @@ Example:
 &bull; If you want to use the script in other language, translate the texts from the <span class="sb">lang_en.json</span> file (in the "<span class="sbi">spbm/templ/</span>" foder) and save it in other "lang_...json" file, with the indice of the language, for example for Chinese save the texts in the "lang_ch.json". The texts in the ".json" file must be stored in valid JSON format. Then, change the value of the <span class="sb">LANG</span> constant in the "config.php" file with the same indice.
 <blockquote class="sbi">define('LANG', 'ch');</blockquote><br><hr><br>
 
- &bull; Home Page: <a href="http://coursesweb.net/php-mysql/simple-backup-manager" title="sPBM - Simple PHP Backup Manager">http://coursesweb.net/php-mysql/simple-backup-manager_s2</a><br><br><br>
+ &bull; Home Page: <a href="http://coursesweb.net/php-mysql/simple-backup-manager" title="sPBM - Simple PHP Backup Manager">http://coursesweb.net/php-mysql/simple-backup-manager</a><br><br><br>
  - <span class="sbi">This script is Free, and Open Source. You can use, modify and publish it freely.<br>
  <em id="mp">With blessing, MarPlo - <a href="http://www.marplo.net/" title="MarPlo.net">MarPlo.net</a> / <a href="http://coursesweb.net/" title="CoursesWeb.net">CoursesWeb.net</a></em>
